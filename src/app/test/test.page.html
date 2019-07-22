@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-segment scrollable>
+        <!--  (ionChange)="onSegmentChange($event)" #segment -->
+        <ion-segment-button value="0" *ngFor="let date of dates">
+          <ion-label>
+            <h1>{{date.day}}</h1>
+            <p>{{date.name}}</p>
+          </ion-label>
+        </ion-segment-button>
+      </ion-segment>
+</ion-content>
