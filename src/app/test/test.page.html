@@ -1,17 +1,154 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>test</ion-title>
+    <ion-title>{{selectedMonth}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-segment scrollable>
-        <!--  (ionChange)="onSegmentChange($event)" #segment -->
-        <ion-segment-button value="0" *ngFor="let date of dates">
-          <ion-label>
-            <h1>{{date.day}}</h1>
-            <p>{{date.name}}</p>
-          </ion-label>
-        </ion-segment-button>
-      </ion-segment>
+  <ion-segment scrollable (ionChange)="onSegmentChange($event)" #segment>
+    <!--  (ionChange)="onSegmentChange($event)" #segment -->
+    <ion-segment-button *ngFor="let i = index; let date of dates" value="{{i}}"
+      checked="{{(selectedDate == i) ? 'true' : 'false'}}">
+      <ion-label>
+        <h1>{{date.day}}</h1>
+        <p>{{date.name}}</p>
+      </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-row>
+    <ion-col size="2">
+      <!-- <div class ="container" id="container">
+          <div class="timings">
+            <div> 9 AM </div>
+            <div> 10 AM </div>
+            <div> 11 AM </div>
+            <div> 12 PM </div>
+            <div> 1 PM </div>
+            <div> 2 PM </div>
+            <div> 3 PM </div>
+            <div> 4 PM </div>
+            <div> 5 PM </div>
+            <div> 6 PM </div>
+            <div> 7 PM </div>
+            <div> 8 PM </div>
+            <div> 9 PM </div>
+          </div>
+        </div> -->
+      <ul class="graph-list">
+        <li>
+          <div class="d-table-cell align-middle">9 AM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">10 AM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">11 AM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">12 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">1 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">2 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">3 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">4 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">5 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">6 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">7 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">8 PM</div>
+        </li>
+        <li>
+          <div class="d-table-cell align-middle">9 PM</div>
+        </li>
+      </ul>
+    </ion-col>
+    <ion-col size="10">
+      <ion-slides pager="false" [options]="slideOpts" #courseDescriptionSlides (ionSlideDidChange)="onSlideDidChange()">
+          <ion-slide *ngFor="let i = index; let date of dates" class="slide-{{i}}">
+      <!-- <div class="events"></div> -->
+      <ul class="graph">
+        <li [style.height.px]="slot1.height" [style.background]="slot1.background">
+          <div *ngIf="slot1 != undefined">
+            {{slot1.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot2.height" [style.background]="slot2.background">
+          <div *ngIf="slot2 != undefined">
+            {{slot2.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot3.height" [style.background]="slot3.background">
+          <div *ngIf="slot3 != undefined">
+            {{slot3.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot4.height" [style.background]="slot4.background">
+          <div *ngIf="slot4 != undefined">
+            {{slot4.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot5.height" [style.background]="slot5.background">
+          <div *ngIf="slot5 != undefined">
+            {{slot5.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot6.height" [style.background]="slot6.background">
+          <div *ngIf="slot6 != undefined">
+            {{slot6.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot7.height" [style.background]="slot7.background">
+          <div *ngIf="slot7 != undefined">
+            {{slot7.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot8.height" [style.background]="slot8.background">
+          <div *ngIf="slot8 != undefined">
+            {{slot8.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot9.height" [style.background]="slot9.background">
+          <div *ngIf="slot9 != undefined">
+            {{slot9.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot10.height" [style.background]="slot10.background">
+          <div *ngIf="slot10 != undefined">
+            {{slot10.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot11.height" [style.background]="slot11.background">
+          <div *ngIf="slot11 != undefined">
+            {{slot11.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot12.height" [style.background]="slot12.background">
+          <div *ngIf="slot12 != undefined">
+            {{slot12.title}}
+          </div>
+        </li>
+        <li [style.height.px]="slot13.height" [style.background]="slot13.background">
+          <div *ngIf="slot13 != undefined">
+            {{slot13.title}}
+          </div>
+        </li>
+      </ul>
+      </ion-slide>
+        </ion-slides>
+    </ion-col>
+  </ion-row>
 </ion-content>
